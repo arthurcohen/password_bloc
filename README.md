@@ -8,7 +8,7 @@ My experience was so good that I decided to make a bigger projetc, with vary exa
 
 ## Getting Started
 
-For now, the project has only one example. The (PasswordBloc)[lib/blocs/password/password_bloc.dart]. There, I use the http library to fetch some data from (passwordrandom.com)[https://www.passwordrandom.com], and list the content dinamicly on the screen.
+For now, the project has only one example. The [PasswordBloc](lib/blocs/password/password_bloc.dart). There, I use the http library to fetch some data from [passwordrandom.com](https://www.passwordrandom.com), and list the content dinamicly on the screen.
 
 ## Running
 
@@ -16,11 +16,11 @@ Running the app is very simple, you just need to clone this repo, download the d
 
 ## Built with
 
-* (Flutter)[https://github.com/flutter/flutter] - Google's mobile app SDK for crafting high-quality native interfaces
+* [Flutter](https://github.com/flutter/flutter) - Google's mobile app SDK for crafting high-quality native interfaces
 
 ## Author
 
-* (Arthur Cohen)[www.forcohen.com]
+* [Arthur Cohen](www.forcohen.com)
 
 ## License
 
