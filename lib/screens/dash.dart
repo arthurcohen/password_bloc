@@ -40,6 +40,7 @@ class Dash extends StatelessWidget {
                         'Counter BLoC',
                         style: Theme.of(context).textTheme.headline,
                       ),
+                      onPressed: () => Navigator.of(context).pushNamed('/counter'),
                       color: Theme.of(context).primaryColorLight,
                     )
                   ],

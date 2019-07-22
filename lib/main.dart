@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'blocs/counter/counter_bloc.dart';
+import 'screens/counter.dart';
 import 'screens/password_list.dart';
 
 import 'blocs/password/password_bloc.dart';
@@ -14,13 +16,17 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PasswordBloc>(
-          builder: (BuildContext context) => PasswordBloc(),
+          builder: (context) => PasswordBloc(),
+        ),
+        BlocProvider<CounterBloc>(
+          builder: (context) => CounterBloc(),
         )
       ],
       child: MaterialApp(
         routes: {
           '/': (context) => Dash(),
           '/password_list': (context) => PasswordList(),
+          '/counter': (context) => Counter(),
         },
         theme: Theme.of(context).copyWith(
             primaryColor: Color(0xff6699cc),

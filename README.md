@@ -8,7 +8,9 @@ My experience was so good that I decided to make a bigger projetc, with vary exa
 
 ## Getting Started
 
-For now, the project has only one example. The [PasswordBloc](lib/blocs/password/password_bloc.dart). There, I use the http library to fetch some data from [passwordrandom.com](https://www.passwordrandom.com), and list the content dinamicly on the screen.
+For now, the project has two examples: 
+- The [PasswordBloc](lib/blocs/password/password_bloc.dart). There, I use the http library to fetch some data from [passwordrandom.com](https://www.passwordrandom.com), and list the content dinamicly on the screen;
+- The [CounterBloc](lib/blocs/counter/counter_bloc.dart). Here, I've done a simple, but not so familiar counter app. Using BLoC and StatefullWidgets, you can increment and decrement values in the screen.
 
 ## Running
 
