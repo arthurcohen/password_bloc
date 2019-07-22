@@ -39,7 +39,6 @@ class PasswordList extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) => ListTile(
                     title: Text(
                       passwords[index],
-                      style: TextStyle(color: Colors.red),
                     ),
                     onTap: () {
                       passBloc.dispatch(RemovePassword());

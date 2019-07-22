@@ -18,9 +18,14 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
       case LoadPasswords:
         yield PasswordLoading();
 
-        final response = await http.get('https://www.passwordrandom.com/query?command=guid&format=json&count=20');
+        var response; 
+        try {
+          response = await http.get('https://www.passwordrandom.com/query?command=guid&format=json&count=20');
+        } catch(_) {
+          yield PasswordNotLoaded();
+        }
 
-        if (response.statusCode == 200) {
+        if (response != null && response.statusCode == 200) {
           List<String> passwords = json.decode(response.body)['char'].cast<String>();
           yield PasswordLoaded(passwords: passwords);
         } else {
