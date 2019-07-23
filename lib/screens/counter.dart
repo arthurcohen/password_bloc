@@ -30,11 +30,11 @@ class _CounterState extends State<Counter> {
                 return Text(state.value.toString());
               },
             ),
-            RaisedButton(
-              child: Text('Change!'),
-              onPressed: () {
+            Switch(
+              value: isIncrementing,
+              onChanged: (bool newValue) {
                 setState(() {
-                  isIncrementing = !isIncrementing;
+                  isIncrementing = newValue;
                 });
               },
             )
