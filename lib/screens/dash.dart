@@ -42,6 +42,13 @@ class Dash extends StatelessWidget {
                       ),
                       onPressed: () => Navigator.of(context).pushNamed('/counter'),
                       color: Theme.of(context).primaryColorLight,
+                    ),
+                    RaisedButton(
+                      child: Text(
+                        'Tictactoe BLoC',
+                        style: Theme.of(context).textTheme.headline,
+                      ),
+                      color: Theme.of(context).primaryColorLight,
                     )
                   ],
                 ),

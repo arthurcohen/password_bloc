@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 abstract class PasswordState extends Equatable  {
   final List<String> passwords;
 
-  PasswordState(this.passwords);
+  PasswordState(this.passwords): super([passwords]);
 }
 
 class PasswordEmpty extends PasswordState {
