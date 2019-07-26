@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/counter/counter_bloc.dart';
+import 'blocs/tictactoe/tictactoe_bloc.dart';
 import 'screens/counter.dart';
 import 'screens/password_list.dart';
 
 import 'blocs/password/password_bloc.dart';
 
 import 'screens/dash.dart';
+import 'screens/tictactoe.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CounterBloc>(
           builder: (context) => CounterBloc(),
+        ),
+        BlocProvider<TictactoeBloc>(
+          builder: (context) => TictactoeBloc(),
         )
       ],
       child: MaterialApp(
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => Dash(),
           '/password_list': (context) => PasswordList(),
           '/counter': (context) => Counter(),
+          '/ttt': (context) => Tictactoe(),
         },
         theme: Theme.of(context).copyWith(
             primaryColor: Color(0xff6699cc),

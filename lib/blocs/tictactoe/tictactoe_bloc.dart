@@ -6,7 +6,7 @@ import 'tictactoe_state.dart';
 
 class TictactoeBloc extends Bloc<TictactoeEvent, TictactoeState> {
   @override
-  TictactoeState get initialState => Playing(Player('1'), Player('2'));
+  TictactoeState get initialState => Playing(Player('1'), Player('2'), TictactoeState.clearBoard());
 
   @override
   Stream<TictactoeState> mapEventToState(

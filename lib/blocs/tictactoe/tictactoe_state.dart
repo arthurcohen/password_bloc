@@ -6,24 +6,26 @@ import 'package:password_bloc/model/player.dart';
 abstract class TictactoeState extends Equatable {
   final Player playerOne;
   final Player playerTwo;
-  static final List<List<int>> board = List<List<int>>.generate(3, (i) => List<int>.generate(3, (j) => -1));
+  final List<List<int>> board;
 
-  TictactoeState(this.playerOne, this.playerTwo) : super([playerOne, playerTwo, board]);
+  TictactoeState(this.playerOne, this.playerTwo, this.board) : super([playerOne, playerTwo, board]);
+
+  static clearBoard() => List<List<int>>.generate(3, (i) => List<int>.generate(3, (j) => -1));
 }
 
 class HasWinner extends TictactoeState {
   final Player winner;
 
-  HasWinner(playerOne, playerTwo, this.winner) : super(playerOne, playerTwo);
+  HasWinner(playerOne, playerTwo, this.winner, board) : super(playerOne, playerTwo, board);
 
 }
 
 class IsDraw extends TictactoeState {
-  IsDraw(playerOne, playerTwo, ) : super(playerOne, playerTwo);
+  IsDraw(playerOne, playerTwo, board) : super(playerOne, playerTwo, board);
 }
 
 class Playing extends TictactoeState {
-  Playing(playerOne, playerTwo) : super(playerOne, playerTwo);
+  Playing(playerOne, playerTwo, board) : super(playerOne, playerTwo, board);
 }
 
 enum Play {

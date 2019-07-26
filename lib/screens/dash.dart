@@ -25,6 +25,7 @@ class Dash extends StatelessWidget {
                   padding: EdgeInsets.all(15),
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   children: <Widget>[
                     RaisedButton(
                       child: Text(
@@ -48,6 +49,7 @@ class Dash extends StatelessWidget {
                         'Tictactoe BLoC',
                         style: Theme.of(context).textTheme.headline,
                       ),
+                      onPressed: () => Navigator.of(context).pushNamed('/ttt'),
                       color: Theme.of(context).primaryColorLight,
                     )
                   ],
