@@ -12,6 +12,14 @@ class TictactoeBloc extends Bloc<TictactoeEvent, TictactoeState> {
   Stream<TictactoeState> mapEventToState(
     TictactoeEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    switch (event.runtimeType) {
+      case DoPlay:
+        DoPlay parsedEvent = event;
+        currentState.board[parsedEvent.coordinateX][parsedEvent.coordinateY] = parsedEvent.play;
+        yield currentState;
+        break;
+      case Reset:
+        yield  Playing(currentState.playerOne, currentState.playerTwo, TictactoeState.clearBoard());
+    }
   }
 }

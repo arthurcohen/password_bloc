@@ -14,6 +14,10 @@ class DoPlay extends TictactoeEvent {
   final Play play;
 
   DoPlay(this.coordinateX, this.coordinateY, this.play):super([coordinateX, coordinateY, play]);
+
 }
 
+class Reset extends TictactoeEvent {
+  Reset():super([]);
+}
 
