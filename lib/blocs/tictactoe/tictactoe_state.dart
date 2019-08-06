@@ -16,7 +16,7 @@ abstract class TictactoeState extends Equatable {
 class HasWinner extends TictactoeState {
   final Player winner;
 
-  HasWinner(playerOne, playerTwo, this.winner, board) : super(playerOne, playerTwo, board);
+  HasWinner(playerOne, playerTwo, board, this.winner) : super(playerOne, playerTwo, board);
 
 }
 
@@ -25,7 +25,9 @@ class IsDraw extends TictactoeState {
 }
 
 class Playing extends TictactoeState {
-  Playing(playerOne, playerTwo, board) : super(playerOne, playerTwo, board);
+  final Play currentPlayer;
+
+  Playing(playerOne, playerTwo, board, this.currentPlayer) : super(playerOne, playerTwo, board);
 }
 
 enum Play {

@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import 'tictactoe_state.dart';
-
 @immutable
 abstract class TictactoeEvent extends Equatable {
   TictactoeEvent([List props = const []]): super(props);
@@ -11,10 +9,8 @@ abstract class TictactoeEvent extends Equatable {
 class DoPlay extends TictactoeEvent {
   final int coordinateX;
   final int coordinateY;
-  final Play play;
 
-  DoPlay(this.coordinateX, this.coordinateY, this.play):super([coordinateX, coordinateY, play]);
-
+  DoPlay(this.coordinateX, this.coordinateY):super([coordinateX, coordinateY]);
 }
 
 class Reset extends TictactoeEvent {

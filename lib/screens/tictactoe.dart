@@ -78,14 +78,8 @@ class _TictactoeState extends State<Tictactoe> {
               child: _createTile(row[j]),
               onPressed: board[i][j] == Play.none
                   ? () {
-                      tttBloc.dispatch(DoPlay(i, j, play));
-                      setState(() {
-                        if (play == Play.x) {
-                          _play = Play.y;
-                        } else {
-                          _play = Play.x;
-                        }
-                      });
+                      tttBloc.dispatch(DoPlay(i, j));
+                      setState(() {});
                     }
                   : null),
         );
