@@ -19,7 +19,7 @@ class Tictactoe extends StatelessWidget {
           tiles.add(
             RaisedButton(
                 child: _createTile(row[j]),
-                onPressed: board[i][j] == Play.none
+                onPressed: (board[i][j] == Play.none && state.runtimeType != HasWinner)
                     ? () {
                         tttBloc.dispatch(DoPlay(i, j));
                       }
@@ -45,10 +45,15 @@ class Tictactoe extends StatelessWidget {
             Expanded(
               child: BlocBuilder(
                 bloc: tttBloc,
-                builder: (context, TictactoeState state) => GridView.count(
-                  crossAxisCount: 3,
-                  children: _mapBoard(state),
-                ),
+                builder: (context, TictactoeState state) {
+                  
+                  // Scaffold.of(context).showSnackBar(SnackBar(content: Text('yey!'),));
+                  
+                  return GridView.count(
+                    crossAxisCount: 3,
+                    children: _mapBoard(state),
+                  );
+                },
               ),
             ),
             RaisedButton(

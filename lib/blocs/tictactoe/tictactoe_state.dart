@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:password_bloc/model/player.dart';
 
 @immutable
 abstract class TictactoeState extends Equatable {
-  final Player playerOne;
-  final Player playerTwo;
+  final Play playerOne;
+  final Play playerTwo;
   final List<List<Play>> board;
 
   TictactoeState(this.playerOne, this.playerTwo, this.board,
@@ -14,13 +13,6 @@ abstract class TictactoeState extends Equatable {
 
   static clearBoard() => List<List<Play>>.generate(
       3, (i) => List<Play>.generate(3, (j) => Play.none));
-}
-
-class HasWinner extends TictactoeState {
-  final Player winner;
-
-  HasWinner(playerOne, playerTwo, board, this.winner)
-      : super(playerOne, playerTwo, board);
 }
 
 class IsDraw extends TictactoeState {
@@ -33,5 +25,12 @@ class Playing extends TictactoeState {
   Playing(playerOne, playerTwo, board, this.currentPlayer)
       : super(playerOne, playerTwo, board, props: [currentPlayer]);
 }
+
+class HasWinner extends Playing {
+
+  HasWinner(playerOne, playerTwo, board, winner)
+      : super(playerOne, playerTwo, board, winner);
+}
+
 
 enum Play { none, x, y }
