@@ -4,18 +4,32 @@ import 'package:password_bloc/blocs/tictactoe/tictactoe_bloc.dart';
 import 'package:password_bloc/blocs/tictactoe/tictactoe_event.dart';
 import 'package:password_bloc/blocs/tictactoe/tictactoe_state.dart';
 
-class Tictactoe extends StatefulWidget {
-  @override
-  _TictactoeState createState() => _TictactoeState();
-}
-
-class _TictactoeState extends State<Tictactoe> {
-  TictactoeBloc tttBloc;
-  Play _play = Play.x;
-
+class Tictactoe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    tttBloc = BlocProvider.of<TictactoeBloc>(context);
+    final TictactoeBloc tttBloc = BlocProvider.of<TictactoeBloc>(context);
+
+    List<Widget> _mapBoard(TictactoeState state) {
+      final List<Widget> tiles = [];
+      final board = state.board;
+
+      for (int i = 0; i < board.length; i++) {
+        List<Play> row = board[i];
+        for (int j = 0; j < row.length; j++) {
+          tiles.add(
+            RaisedButton(
+                child: _createTile(row[j]),
+                onPressed: board[i][j] == Play.none
+                    ? () {
+                        tttBloc.dispatch(DoPlay(i, j));
+                      }
+                    : null),
+          );
+        }
+      }
+
+      return tiles;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +47,7 @@ class _TictactoeState extends State<Tictactoe> {
                 bloc: tttBloc,
                 builder: (context, TictactoeState state) => GridView.count(
                   crossAxisCount: 3,
-                  children: _mapBoard(state.board, _play),
+                  children: _mapBoard(state),
                 ),
               ),
             ),
@@ -41,7 +55,6 @@ class _TictactoeState extends State<Tictactoe> {
               child: Text('Reset'),
               onPressed: () {
                 tttBloc.dispatch(Reset());
-                setState(() {});
               },
             ),
           ],
@@ -65,27 +78,5 @@ class _TictactoeState extends State<Tictactoe> {
     }
 
     return tile;
-  }
-
-  List<Widget> _mapBoard(List<List<Play>> board, Play play) {
-    final List<Widget> tiles = [];
-
-    for (int i = 0; i < board.length; i++) {
-      List<Play> row = board[i];
-      for (int j = 0; j < row.length; j++) {
-        tiles.add(
-          RaisedButton(
-              child: _createTile(row[j]),
-              onPressed: board[i][j] == Play.none
-                  ? () {
-                      tttBloc.dispatch(DoPlay(i, j));
-                      setState(() {});
-                    }
-                  : null),
-        );
-      }
-    }
-
-    return tiles;
   }
 }
