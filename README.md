@@ -8,9 +8,10 @@ My experience was so good that I decided to make a bigger projetc, with vary exa
 
 ## Getting Started
 
-For now, the project has two examples: 
+For now, the project has three examples: 
 - The [PasswordBloc](lib/blocs/password/password_bloc.dart). There, I use the http library to fetch some data from [passwordrandom.com](https://www.passwordrandom.com), and list the content dinamicly on the screen;
 - The [CounterBloc](lib/blocs/counter/counter_bloc.dart). Here, I've done a simple, but not so familiar counter app. Using BLoC and StatefullWidgets, you can increment and decrement values in the screen.
+- The [TicTacToeBloc](lib/blocs/tictactoe/tictactoe_bloc.dart). Now, every logic of the game is inside the BLoC. This is a simple game with simple rules, for playing locally with a friend. Maybe in the future I develop an online version, as in [Chaos Cards](https://github.com/arthurcohen/ChaosCards).
 
 ## Running
 
