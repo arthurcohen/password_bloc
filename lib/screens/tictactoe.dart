@@ -13,17 +13,20 @@ class Tictactoe extends StatelessWidget {
       final List<Widget> tiles = [];
       final board = state.board;
 
+      var callback = (int i, int j) => tttBloc.dispatch(DoPlay(i, j));
+
       for (int i = 0; i < board.length; i++) {
         List<Play> row = board[i];
         for (int j = 0; j < row.length; j++) {
           tiles.add(
             RaisedButton(
                 child: _createTile(row[j]),
-                onPressed: (board[i][j] == Play.none && state.runtimeType != HasWinner)
-                    ? () {
-                        tttBloc.dispatch(DoPlay(i, j));
-                      }
-                    : null),
+                onPressed:
+                    (board[i][j] == Play.none && state.runtimeType == Playing)
+                        ? () {
+                            callback(i, j);
+                          }
+                        : null),
           );
         }
       }
@@ -46,9 +49,15 @@ class Tictactoe extends StatelessWidget {
               child: BlocBuilder(
                 bloc: tttBloc,
                 builder: (context, TictactoeState state) {
-                  
-                  // Scaffold.of(context).showSnackBar(SnackBar(content: Text('yey!'),));
-                  
+                  if (state is HasWinner) {
+                    Future.delayed(
+                        Duration.zero,
+                        () => Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                  'Yey! The ${state.currentPlayer.toString().split('.').last} wins!'),
+                            )));
+                  }
+
                   return GridView.count(
                     crossAxisCount: 3,
                     children: _mapBoard(state),
@@ -56,10 +65,14 @@ class Tictactoe extends StatelessWidget {
                 },
               ),
             ),
-            RaisedButton(
-              child: Text('Reset'),
-              onPressed: () {
-                tttBloc.dispatch(Reset());
+            Builder(
+              builder: (context) {
+                return RaisedButton(
+                  child: Text('Reset'),
+                  onPressed: () {
+                    tttBloc.dispatch(Reset());
+                  },
+                );
               },
             ),
           ],
