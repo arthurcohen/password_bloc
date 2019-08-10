@@ -33,4 +33,4 @@ class HasWinner extends Playing {
 }
 
 
-enum Play { none, x, y }
+enum Play { none, x, o }

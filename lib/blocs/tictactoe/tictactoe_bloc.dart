@@ -6,7 +6,7 @@ import 'tictactoe_state.dart';
 class TictactoeBloc extends Bloc<TictactoeEvent, TictactoeState> {
   @override
   TictactoeState get initialState =>
-      Playing(Play.x, Play.y, TictactoeState.clearBoard(), Play.x);
+      Playing(Play.x, Play.o, TictactoeState.clearBoard(), Play.x);
 
   @override
   Stream<TictactoeState> mapEventToState(TictactoeEvent event) async* {
@@ -31,7 +31,7 @@ class TictactoeBloc extends Bloc<TictactoeEvent, TictactoeState> {
             state.playerOne,
             state.playerTwo,
             newBoard,
-            state.currentPlayer == Play.y ? Play.x : Play.y,
+            state.currentPlayer == Play.o ? Play.x : Play.o,
           );
           break;
         case Reset:
@@ -46,7 +46,7 @@ class TictactoeBloc extends Bloc<TictactoeEvent, TictactoeState> {
   }
 
   bool checkForWinner(List<List<Play>> board, DoPlay event, Play play) {
-    return checkHorizontal(board, event, play) || checkVertical(board, event, play) || checkDiagonal(board, event, play);
+    return checkHorizontal(board, event, play) || checkVertical(board, event, play) || checkDiagonal(board, event, play) || checkAntiDiagonal(board, event, play);
   }
 
   bool checkHorizontal(List<List<Play>> board, DoPlay event, Play play) {
