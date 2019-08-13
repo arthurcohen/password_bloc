@@ -89,7 +89,7 @@ class Tictactoe extends StatelessWidget {
         tile = Icon(Icons.clear);
         break;
       case Play.o:
-        tile = Icon(Icons.crop_din);
+        tile = Icon(Icons.fiber_manual_record);
         break;
       default:
         tile = null;
